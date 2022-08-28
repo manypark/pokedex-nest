@@ -14,6 +14,10 @@ export class PokemonService {
     private readonly pokemonModel:Model<Pokemon>
   ) {}
 
+  /** 
+   * Creacion de un pokemon
+    @param createPokemonDto DTO del objeto de pokemon a guardar 
+  */
   async create( createPokemonDto: CreatePokemonDto ) {
     try {
       return await this.pokemonModel.create( createPokemonDto );
@@ -22,10 +26,16 @@ export class PokemonService {
     }
   }
 
+  /** 
+   * Regresa una lista de todos los pokemons
+  */
   async findAll() {
     return await this.pokemonModel.find();
   }
 
+  /** 
+   * Funcion que valida por id, idmongo y name la busqueda de un pokemon
+  */
   async findOne( term: string ) {
 
     let pokemon:Pokemon;
@@ -44,6 +54,11 @@ export class PokemonService {
     return pokemon;
   }
 
+  /** 
+   * Funcion que valida por id, idmongo y name la busqueda de un pokemon
+   * @param term termino para actualizar el pokemon
+   * @dto updatePokemonDto dto para actualizar el pokemon
+  */
   async update( term: string, updatePokemonDto: UpdatePokemonDto) {
 
     const pokemon = await this.findOne( term );
@@ -57,6 +72,9 @@ export class PokemonService {
     return { ...pokemon.toJSON(), ...updatePokemonDto };
   }
 
+  /**
+   * Eliminar un pokemon
+   */
   async remove( idPokemon:string ) {
     // const pokemon = await this.findOne(term);
     // return await this.pokemonModel.deleteOne();
@@ -68,6 +86,9 @@ export class PokemonService {
     return;
   }
 
+  /**
+   * Funcion para procesar un error controlado de mongo
+   */
   private hanldeExeption( error:any ) {
 
     if( error.code === 11000 ) {
