@@ -14,6 +14,10 @@ npm i
 ```
 docker-compose up -d
 ```
+5. Recostruir la db con la semilla
+```
+http://localhost:3000/api/v2/seed (GET)
+```
 
 ## Stack usado
 * Mongo DB
