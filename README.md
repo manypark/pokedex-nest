@@ -14,7 +14,17 @@ npm i
 ```
 docker-compose up -d
 ```
-5. Recostruir la db con la semilla
+
+5. Clonar el archivo ```.env.template``` y renombrar la copia a ```.env````
+
+6. Llenar las variables de entorno definidas en le ```.env```
+
+7. Ejecutar la aplicacion en dev:
+```
+npm run start:dev
+```
+
+8. Reconstruir la db con la semilla
 ```
 http://localhost:3000/api/v2/seed (GET)
 ```
